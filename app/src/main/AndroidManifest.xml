@@ -57,7 +57,8 @@
             android:name=".EditFriendsActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".RecipientsActivity"
+        <activity
+            android:name=".RecipientsActivity"
                   android:screenOrientation="portrait">
         </activity>
     </application>
