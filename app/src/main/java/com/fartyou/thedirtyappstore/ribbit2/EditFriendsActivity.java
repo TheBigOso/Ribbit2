@@ -19,8 +19,8 @@ import com.parse.SaveCallback;
 import java.util.List;
 
 
-//AppCompatActivity
 public class EditFriendsActivity extends ListActivity {
+
     public static final String TAG = EditFriendsActivity.class.getSimpleName();
 
     protected List<ParseUser> mUsers;
@@ -32,6 +32,8 @@ public class EditFriendsActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(getWindow().FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_edit_friends);
+
+
 
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
     }

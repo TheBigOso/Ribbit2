@@ -1,13 +1,16 @@
 package com.fartyou.thedirtyappstore.ribbit2;
 
 import android.app.AlertDialog;
+import android.app.ListActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -16,33 +19,29 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
-/**
- * Created by ryanr on 10/13/2015.
- */
-public class FriendsFragment extends ListFragment {
+public class RecipientsActivity extends ListActivity {
 
-    public static final String TAG = FriendsFragment.class.getSimpleName();
-
+    public static final String TAG = RecipientsActivity.class.getSimpleName();
     protected List<ParseUser> mFriends;
     protected ParseRelation<ParseUser> mFriendsRelation;
     protected ParseUser mCurrentUser;
 
+    protected MenuItem mSendMenuItem;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        setContentView(R.layout.activity_recipients);
 
 
+        getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 
-
-//        TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-//        textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-        return rootView;
     }
 
     @Override
-   public void onResume() {
+    public void onResume() {
         super.onResume();
 
         mCurrentUser = ParseUser.getCurrentUser();
@@ -67,10 +66,9 @@ public class FriendsFragment extends ListFragment {
                             android.R.layout.simple_list_item_checked,
                             usernames);
                     setListAdapter(adapter);
-                }
-                else {
+                } else {
                     Log.e(TAG, e.getMessage());
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getListView().getContext());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RecipientsActivity.this);
                     builder.setMessage(e.getMessage())
                             .setTitle(R.string.error_title)
                             .setPositiveButton(android.R.string.ok, null);
@@ -80,4 +78,20 @@ public class FriendsFragment extends ListFragment {
             }
         });
     }
+
+
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        mSendMenuItem =menu.getItem(0);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//  @Override
+//    protected void onListItemClick(ListView l, View v, int position, long id) {
+//        super.onListItemClick(l, v, position, id);
+//
+//        mSendMenuItem.setVisible(true);
+//  }
+//}
 }
