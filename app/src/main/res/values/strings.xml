@@ -25,7 +25,21 @@
     <string name="menu_logout_label">Logout</string>
     <string name="empty_inbox_label">No New messages!</string>
     <string name="empty_friends_label">Add friends to begin!</string>
-  <string name="menu_edit_friends_label">Edit Friends</string>
-  <string name="error_title">We\'re Sorry</string>
+    <string name="menu_edit_friends_label">Edit Friends</string>
+    <string name="error_title">We\'re Sorry</string>
+    <string name="menu_camera_label">Camera</string>
+    <string name="error_external_storage">There was a problem accessing your devices external storage</string>
+    <string name="general_error">"Sorry, There was an error!"</string>
+    <string name="video_file_size_warning">"Your video must be less then 10Mb"</string>
+    <string name="error_opening_file">"There was a problem with the selected file."</string>
+    <string name="error_file_size_to_large">""The Selected field is to large. Please select a new file.""</string>
+
+
+    <string-array name = "camera_choices">
+        <item>Take Picture</item>
+        <item>Take Video</item>
+        <item>Choose Picture</item>
+        <item>Choose Video</item>
+    </string-array>
 
 </resources>
